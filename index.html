@@ -122,7 +122,6 @@ function submitForm(event) {
 
     </script>
   
-
     <style>
       {
             margin: 0;
@@ -131,9 +130,20 @@ function submitForm(event) {
         }
        .page { display: none; }
         .logo {
-            height: 50px;
-            margin-right: 10px;
-        }
+  height: 50px;
+  margin-right: 10px;
+  animation: flip 4s linear infinite;
+}
+
+@keyframes flip {
+    from {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(180deg);
+    }
+  }
+
         .page { 
             display: none; 
             opacity: 0;
@@ -239,15 +249,14 @@ body {
     color: #00aced;
     transform: scale(1.2);
 }
-
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-success">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#" onclick="showPage('home')">
-                <img src="https://i.ibb.co.com/vxvgy4ws/78ec07c8-b878-4f0f-82b4-a9d085ca484d-removalai-preview.jpg" alt="Logo Sekolah" class="logo">
-                PPTQ AL-MUNAWWAR
+                <img src="https://i.ibb.co.com/vxvgy4ws/78ec07c8-b878-4f0f-82b4-a9d085ca484d-removalai-preview.jpg" alt="Logo" class="logo">
+                <marquee className="marquee">PPTQ AL-MUNAWWAR</marquee>
             </a>
             <button class="navbar-toggler" type="button" onclick="closeNavbar()">
     <span class="navbar-toggler-icon"></span>
@@ -355,7 +364,7 @@ body {
                     <i class="fab fa-instagram"></i>
                 </a>
               </a>
-                <a href="https://www.tiktok.com/@almunawwar011" class="social-icon" target="_blank">
+                <a href="https://www.tiktok.com/@almunawwar011==" class="social-icon" target="_blank">
                     <i class="fab fa-tiktok"></i>
                   </a>
                 <a href="https://www.youtube.com/@almunawwartemanggung1882" class="social-icon" target="_blank">
