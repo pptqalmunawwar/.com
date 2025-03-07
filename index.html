@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Pendaftaran</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+      let isSubmitting = false; // Variabel untuk mencegah submit ganda
+
+function showPage(pageId) {
+    let pages = document.querySelectorAll('.page');
+    pages.forEach(page => {
+        page.style.opacity = 0;
+        setTimeout(() => {
+            page.style.display = 'none';
+        }, 300);
+    });
+
+    setTimeout(() => {
+        let page = document.getElementById(pageId);
+        if (page) {
+            page.style.display = 'block';
+            setTimeout(() => {
+                page.style.opacity = 1;
+            }, 50);
+        }
+        toggleHomeContent(pageId);
+        toggleFooter(pageId);
+    }, 300);
+}
+function toggleFooter(pageId) {
+    let footer = document.getElementById("footer");
+    if (footer) {
+        if (pageId === "home") {
+            footer.style.display = "block"; // Tampilkan di home
+        } else {
+            footer.style.display = "none"; // Sembunyikan di halaman lain
+        }
+    }
+}
+
+function toggleHomeContent(pageId) {
+    let homeContent = document.getElementById("home-content");
+    if (homeContent) {
+        homeContent.style.display = (pageId === "home") ? "block" : "none";
+    }
+}
+
+// Fungsi untuk menutup navbar saat berpindah halaman
+function closeNavbar() {
+    let navbar = document.querySelector(".navbar-collapse");
+    if (navbar && navbar.classList.contains("show")) {
+        navbar.classList.remove("show"); // Tutup navbar jika terbuka
+    } else {
+        navbar.classList.add("show"); // Buka navbar jika tertutup
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    showPage('home'); // Saat pertama kali halaman dimuat, tampilkan Home
+});
+
+function submitForm(event) {
+    event.preventDefault(); // Mencegah reload halaman saat submit
+
+    if (isSubmitting) return; // Jika sedang diproses, hentikan eksekusi
+    isSubmitting = true; // Tandai sebagai sedang diproses
+
+    // Ambil nilai input
+    let namalengkap = document.querySelector("[name='nama_lengkap']").value.trim();
+    let namaayah = document.querySelector("[name='nama_ayah']").value.trim();
+    let namaibu = document.querySelector("[name='nama_ibu']").value.trim();
+    let nomorindukkependudukan = document.querySelector("[name='nomor_induk_kependudukan']").value.trim();
+    let nokk = document.querySelector("[name='no_kk']").value.trim();
+    let tempattanggallahir = document.querySelector("[name='tempat_tanggal_lahir']").value.trim();
+    let nowa = document.querySelector("[name='no_wa']").value.trim();
+    let alamatlengkap = document.querySelector("[name='alamat_lengkap']").value.trim();
+
+    // Validasi input
+    if (!namalengkap || !namaayah || !namaibu || !nomorindukkependudukan || !nokk || !tempattanggallahir || !nowa || !alamatlengkap) {
+        alert("Semua field harus diisi!");
+        isSubmitting = false;
+        return;
+    }
+
+    // URL Google Form
+    let formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfZPwFDtzlu-hQuJGSK3fSxAcNA-rQbrHNiMXRvg9B8lHvhhA/formResponse";
+
+    // Buat FormData untuk dikirim
+    let formData = new FormData();
+    formData.append("entry.1108226512", namalengkap);
+    formData.append("entry.678335457", namaayah);
+    formData.append("entry.1806391435", namaibu);
+    formData.append("entry.289057655", nomorindukkependudukan);
+    formData.append("entry.1420806674", nokk);
+    formData.append("entry.1146723998", tempattanggallahir);
+    formData.append("entry.1349535224", nowa);
+    formData.append("entry.866960466", alamatlengkap);
+
+    // Kirim data ke Google Form
+    fetch(formUrl, {
+        method: "POST",
+        body: formData,
+        mode: "no-cors"
+    })
+    .then(() => {
+        alert("Pendaftaran berhasil!");
+        showPage('thankyou'); // Pindah ke halaman terima kasih
+        isSubmitting = false; // Reset status setelah selesai
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("Terjadi kesalahan saat mengirim formulir. Silakan coba lagi.");
+        isSubmitting = false; // Reset status jika error
+    });
+}
+
+    </script>
+  
+
+    <style>
+      {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+       .page { display: none; }
+        .logo {
+            height: 50px;
+            margin-right: 10px;
+        }
+        .page { 
+            display: none; 
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .container {
+            max-width: 100%;
+        }
+        .rincian-pembayaran {
+            background-color: none;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .btn-success {
+            transition: all 0.3s ease-in-out;
+        }
+        .btn-success:hover {
+            transform: scale(1.05);
+        }
+      .gambar-landscape {
+    width: 500px; /* Atur lebar sesuai kebutuhan */
+    height: 250px; /* Atur tinggi agar lebih landscape */
+    object-fit: cover; /* Memotong bagian gambar agar pas */
+    display: block;
+    margin: auto;
+    position: relative; /* Pastikan gambar tidak berada di atas teks */
+    z-index: /* Biarkan teks tetap di atas */
+}
+body {
+    background-image: url('https://i.ibb.co.com/chYk0z1v/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    filter: brightness(0.8) contrast(1.2);
+}
+      .thank-you-message {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeIn 1s forwards;
+        }
+      @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+.teks {
+    position: relative;
+    top: 1000px; /* Geser teks ke bawah */
+}
+.photo-wrapper {
+        padding: 10px;
+    }
+
+    .photo-wrapper img {
+        width: 100%;
+        height: 200px; 
+        object-fit: cover; 
+        border-radius: 10px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .row {
+        margin-bottom: 20px;
+    }
+ .navbar-collapse {
+            transition: height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+        .navbar-collapse.show {
+            height: auto;
+            opacity: 1;
+        }
+        .navbar-collapse.collapsing {
+            height: 0;
+            opacity: 0;
+        }
+        .footer {
+            background: green;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            width: 100%;
+            position: relative;
+            bottom: 0;
+}
+
+.copyright {
+    margin: 0;
+    font-size: 14px;
+    color: #bbb;
+}
+
+.social-icon {
+    margin: 0 10px;
+    color: #fff;
+    font-size: 18px;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.social-icon:hover {
+    color: #00aced;
+    transform: scale(1.2);
+}
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#" onclick="showPage('home')">
+                <img src="https://i.ibb.co.com/vxvgy4ws/78ec07c8-b878-4f0f-82b4-a9d085ca484d-removalai-preview.jpg" alt="Logo Sekolah" class="logo">
+                PPTQ AL-MUNAWWAR
+            </a>
+            <button class="navbar-toggler" type="button" onclick="closeNavbar()">
+    <span class="navbar-toggler-icon"></span>
+</button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#" onclick="showPage('home'); closeNavbar()">Beranda</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" onclick="showPage('profil'); closeNavbar()">Profil</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" onclick="showPage('pendaftaran'); closeNavbar()">Pendaftaran</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" onclick="showPage('pembayaran'); closeNavbar()">Administrasi</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" onclick="showPage('brosur'); closeNavbar()">Brosur</a></li>
+    </ul>
+</div>             
+                </ul>
+            </div>
+        </div>
+    </nav>
+ <div id="home-content" style="display: none;">
+    <div class="container text-center">
+        <img src="https://i.ibb.co.com/fG4QXYYD/LOGO-NEW-min.png" width="80%" style="max-width: 100px; margin-bottom: -45px; margin-top: 25px">
+        <p><img src="https://i.ibb.co.com/qMxgVg8V/ar-kop.png" width="100%" style="max-width: 200px; margin-bottom: -100px; margin-top: 10px"></p>
+        <br><br><br>
+        <div id="slideshow" class="carousel slide mx-auto" data-bs-ride="carousel" style="max-width: 500px; margin-bottom: -100px;">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://i.ibb.co.com/G3JZXPqV/1.jpg" class="gambar-landscape">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.ibb.co.com/fY6wS6tf/Whats-App-Image-2025-02-26-at-07-29-55-2c66e124.jpg" class="gambar-landscape">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://i.ibb.co.com/xq09JMk4/Whats-App-Image-2025-02-26-at-07-31-16-0cadfa27.jpg" class="gambar-landscape">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#slideshow" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#slideshow" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
+        </div>
+    </div>
+</div>
+   <div class="container mt-5">
+        <div id="home" class="page">
+            <br><br><br>
+          <h1 class="text-center">Pondok Pesantren Tahfidzul Qur`an AL-MUNAWWAR</h1>
+          <p style="text-align:justify">Pondok pesantren Tahfidzul Quran Al Munawwar adalah salah satu lembaga pesantren di bidang Tahfidzul Quran (Program Utama) dan Kajian Kitab-Kitab Kuning ala Pesantren Salaf. Pesantren ini didirikan oleh Almaghfurlah KH. Amin Wastoni pada tahun 1985. Dan resmi terdaftar di Kementerian Agama tepat pada tangal 5 Januari 1998 sampai sekarang. Dan diasuh oleh beliau Bpk, KH. Sholachudin,S.E. dan Ibu Nyai. Hj. Khotimah, S.Ag. Al-Hafidzoh</p>
+           <p style="text-align:justify">Al Munawwar adalah tempat pendidikan  Al Qur`an Dan Pembelajaran kitab kuning ahlussunnah wal jammah. Serta mendidik santri yang berakhlakul karimah sesuai syariat Islam dengan mendalami berbagai ilmu keagaaman. Yang dikemas dengan kurikulum pesantren semi/modern dan salaf dibawah bimbingan beliau murobbi ruhina Bapak K.H. Sholachudin, S.E dan Ibu Nyai Hj. Khotimah, S.Ag Al Hafidzah.</p>
+          <p style="text-align:justify"> Dengan memprioritaskan Tahfidzul Qur`an maka setiap santri diharapkan untuk bisa khatam Al Qur`an, baik Bil Hifdzi maupun Bin Nadzri. Dan di samping itu kurikulum madrasan juga mengkiblat ala pesantren salaf. Dimana ada banyak Fan kitab kuning yang dikaji seperti Fan Fiqhih, tauhid, akhlaq, nahwu sorof,dan tasawuf 
+         <p style="text-align:justify">Selain kegiatan mengaji para santri juga di latih untuk mengembanhkan minat bakat masing masing. Seperti kegiatan Qiroah, Rebana, Silat, Khitobah, Kaligrafi, Bahtsu masail, dan mendalami ilmu kemasyarakatan lainya. Sebagai bekal masa depan untuk hidup bermasyarakat
+          
+          <h1 class="text-center">Program Pesantren</h1>
+        <ul>
+            <li><h6>Tahfidzul Qur’an 30 Juz</h6>
+            <li><h6>Al Qur’an Binadhor 30 Juz</h6>
+            <li><h6>Kajian Kitab-Kitab Kuning Salaf</h6>
+            <li><h6>Madrasah Diniyah Al-Munawwar</h6>
+            <li><h6>Taman Pendidikan Al-Qur’an (TPQ)</h6>
+            <li><h6>Majelis Ta’lim Al-Munawwar</h6>
+            <li><h6>Pendidikan Ilmu Kemasyarakatan</h6>
+        </ul>
+
+        <h1 class="text-center">Fasilitas</h1>
+        <ul>
+            <li><h6>Asrama Santri Pa/Pi Masing-masing berlantai 2 dengan jumlah kamar 20 buah</li>
+            <li><h6>Kamar mandi, WC, & tempat wudhu yang memadai</li>
+            <li><h6>6 Ruang kelas, 1 Mushola, & 1 Aula</li>
+            <li><h6>Penerangan listrik dan PAM memadai kebutuhan santri</li>
+            <li><h6>Sarana belajar di masing-masing ruangan & perpustakaan</li>
+            <li><h6>Koperasi Putra 1, Koperasi Putri 1</li>
+        </ul>
+
+        <h1 class="text-center">Kegiatan Tambahan</h1>
+        <ul>
+            <li><h6>Sema’an Al Qur’an</li>
+            <li><h6>Selapanan Rutin Ahad Wage</li>
+            <li><h6>Maulid Adziba’i & Simtudduror</li>
+            <li><h6>Tahlil</li>
+            <li><h6>Mujahadah & Istighosah</li>
+            <li><h6>Bahtsul Masail (Forum Diskusi)</li>
+            <li><h6>Khithobah</li>
+            <li><h6>Pencak Silat (Pagar Nusa Gasmi)</li>
+            <li><h6>Ziarah Muasis</li>
+            <li><h6>Rebana (Hadroh & Banjari)</li>
+            <li><h6>Qiroah</li>
+            <li><h6>Seni Kaligrafi & Khot</li>
+        </ul>
+<footer class="footer mt-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6 text-center text-md-start">
+                <p class="copyright">© 2025 PPTQ AL-MUNAWWAR. All Rights Reserved.</p>
+            <div class="col-md-6 text-center text-md-start">
+                <p class="copyright">Untuk informasi kontak kami bisa mengkik ikon dibawah ini </p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <a href="https://wa.me/6285183058189" class="social-icon" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://web.facebook.com/almunawwar.almunawwar.77" class="social-icon" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/al_munawwar?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-icon" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+              </a>
+                <a href="https://www.tiktok.com/@almunawwar011" class="social-icon" target="_blank">
+                    <i class="fab fa-tiktok"></i>
+                  </a>
+                <a href="https://www.youtube.com/@almunawwartemanggung1882" class="social-icon" target="_blank">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+        </div>
+
+        <div id="profil" class="page">
+            <h1 class="text-center">PPTQ AL-MUNAWWAR</h1>
+                       <h2>Visi & Misi</h2>
+           <h6> <p><strong>Visi:</strong> Berilmu Amaliyah, Beramal Ilmiah, Berakhlaqul Karimah, Berjiwa Quraniyah, Dan Bermu'asyaroh Basyariah.</p>
+            <p><strong>Misi:</strong></p>
+            <ul>
+                <li>Menumbuh kembangkan sikap akhlaqul karimah kharimah pada santri sesuai dengan syarat Ahlussunah Wal Jamaah.</li>
+                <li>Melaksanakan bimbingan,pembelajaran,dan penghayatan nilai islam secara optimal.</li>
+                <li>Menumbuhkan sikap kompetitif pada santri untuk meraih prestasi spiritual.</li>
+              <li>Memberikan keteladanan dalam beribadah,beramal,dan berperilaku.
+            </ul>
+        </div>
+
+       <div class="container mt-5">
+    <div id="pendaftaran" class="page">
+        <h1 class="text-center">Formulir Pendaftaran</h1>
+        <form id="registrationForm" onsubmit="submitForm(event)">
+            <label>Nama Lengkap:</label>
+            <input type="text" name="nama_lengkap" class="form-control" required>
+
+            <label>Nama Ayah:</label>
+            <input type="text" name="nama_ayah" class="form-control" required>
+
+            <label>Nama Ibu:</label>
+            <input type="text" name="nama_ibu" class="form-control" required>
+
+            <label>Nomor Induk Kependudukan (NIK):</label>
+            <input type="text" name="nomor_induk_kependudukan" class="form-control" required>
+
+            <label>No KK:</label>
+            <input type="text" name="no_kk" class="form-control" required>
+
+            <label>Tempat, Tanggal Lahir:</label>
+            <input type="text" name="tempat_tanggal_lahir" class="form-control" required>
+
+            <label>No WA:</label>
+            <input type="text" name="no_wa" class="form-control" required>
+
+            <label>Alamat Lengkap:</label>
+            <input type="text" name="alamat_lengkap" class="form-control" required>
+
+            <button type="submit" class="btn btn-success mt-3">Daftar</button>
+        </form>
+    </div>
+
+    <!-- Halaman Terima Kasih -->
+    <div id="thankyou" class="page">
+        <h1 class="text-center">Terima Kasih!</h1>
+        <p class="text-center">Pendaftaran Anda telah berhasil dikirim.</p>
+      <p class="text-center">Kami akan segera menghubungi anda untuk informasi lebih lanjut.</p>
+        <button class="btn btn-primary" onclick="showPage('pendaftaran')">Kembali</button>
+    </div>
+</div>
+
+<script>
+    function showThankYou() {
+    window.location.href = "thankyou.html"; // Arahkan ke halaman lain
+}
+</script>
+</div>
+          
+<!-- Halaman Pembayaran -->
+<div id="pembayaran" class="page">
+    <h1 class="text-center">Konfirmasi Pembayaran</h1>
+
+    <!-- Rincian Pembayaran -->
+    <div class="rincian-pembayaran mt-4">
+        <h2 class="text-center">Rincian Biaya Santri Baru</h2>
+        <p><strong>A. Pendaftaran (dibayar 1x)</strong></p>
+        <ul>
+            <li>Pendaftaran Pondok: Rp 50.000</li>
+            <li>Pembayaran Madrasah: Rp 40.000</li>
+            <li>Koperasi: Rp 30.000</li>
+            <li>Kitab & Mushaf Al-Qur'an: Rp 200.000</li>
+            <li><strong>Total: Rp 320.000</strong></li>
+        </ul>
+
+        <p><strong>B. Syahriyah Dibayar tiap Bulan</strong></p>
+        <ul>
+            <li>Pondok: Rp 30.000</li>
+            <li>Madrasah: Rp 30.000</li>
+            <li>Konsumsi (Makan 2x sehari): Rp 210.000</li>
+            <li>Dana perawatan & pengembangan: Rp 30.000</li>
+            <li><strong>Total: Rp 300.000</strong></li>
+        </ul>
+
+        <p><strong>C. Infaq Pembangunan</strong>: Rp 700.000</p>
+        <p><strong>D. Jas Almamater (Pa/Pi)</strong>: Rp 180.000</p>
+        <p><strong>E. Sarung Almamater (Pa/Pi)</strong>: Rp 130.000</p>
+        <p><strong>F. Kerudung Almamater (Pi)</strong>: Rp 80.000</p>
+
+        <p><strong>Total biaya Santri Putra (A, B, C, D, E)</strong>: Rp 1.630.000</p>
+        <p><strong>Total biaya Santri Putri (A, B, C, D, E, F)</strong>: Rp 1.710.000</p>
+
+        <p><em>Untuk Infaq pembangunan bisa diangsur</em></p>
+        <p><em>Untuk pembayaran bisa langsung ke kantor pusat.</em></p>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<div id="brosur" class="page">
+    <h1 class="text-center">Dokumentasi</h1>
+    <p class="text-center">Berikut adalah beberapa dokumentasi dari pondok.</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-6 photo-wrapper"><img src="https://i.ibb.co.com/8L1ZQDd6/Whats-App-Image-2025-02-26-at-07-29-38-21284856.jpg" alt="Foto 1"></div>
+            <div class="col-md-4 col-6 photo-wrapper"><img src="https://i.ibb.co.com/zhVPKTH7/Whats-App-Image-2025-02-26-at-07-29-39-619659de.jpg" alt="Foto 2"></div>
+            <div class="col-md-4 col-6 photo-wrapper"><img src=https://i.ibb.co.com/QvRKcFWM/Whats-App-Image-2025-02-26-at-07-29-33-8d3788a5.jpg" alt="Foto 3"></div>
+            <div class="col-md-4 col-6 photo-wrapper"><img src="https://i.ibb.co.com/cSYgK82R/Whats-App-Image-2025-02-26-at-07-29-41-da5012ea.jpg" alt="Foto 4"></div>
+            <div class="col-md-4 col-6 photo-wrapper"><img src="https://i.ibb.co.com/H0Wz1bd/Whats-App-Image-2025-02-26-at-07-30-34-4378d521.jpg" alt="Foto 5"></div>
+            <div class="col-md-4 col-6 photo-wrapper"><img src="https://i.ibb.co.com/TMVxrf5g/Whats-App-Image-2025-02-26-at-07-30-18-69608abf.jpg" alt="Foto 6"></div>
+            <div class="col-md-4 col-6 photo-wrapper"><img src="https://i.ibb.co.com/Kjnc2WQH/Whats-App-Image-2025-02-26-at-07-31-19-5311f90e.jpg" alt="Foto 7"></div>
+            <div class="col-md-4 col-6 photo-wrapper"><img src="https://i.ibb.co.com/21v04Kn7/Whats-App-Image-2025-02-26-at-07-30-34-2680cdad.jpg" alt="Foto 8"></div>
+            <div class="col-md-4 col-6 photo-wrapper"><img src="https://i.ibb.co.com/fYNhkHWS/Whats-App-Image-2025-02-26-at-07-29-30-3472a630.jpg" alt="Foto 9"></div>
+            <div class="col-md-4 col-6 photo-wrapper"><img src="https://i.ibb.co.com/8DQHd8NN/Whats-App-Image-2025-02-26-at-07-30-57-88fac35f.jpg"></div>
+            <div class="col-md-4 col-6 photo-wrapper"><img src="https://i.ibb.co.com/Qvy33D8h/Whats-App-Image-2025-02-26-at-07-30-56-23b28551.jpg" alt="Foto 11"></div>
+            <div class="col-md-4 col-6 photo-wrapper"><img src="https://i.ibb.co.com/zTFMCZPm/Whats-App-Image-2025-02-26-at-07-30-58-6445561f.jpg" alt="Foto 12"></div>
+            <div class="col-md-4 col-6 photo-wrapper"><img src="https://i.ibb.co.com/1Yg1M3rf/Whats-App-Image-2025-02-26-at-07-31-04-db6071fd.jpg" alt="Foto 13"></div>
+            <div class="col-md-4 col-6 photo-wrapper"><img src="https://i.ibb.co.com/1f5tYVdw/Whats-App-Image-2025-02-26-at-07-29-55-6863cd4e.jpg" alt="Foto 14"></div>
+            <div class="col-md-4 col-6 photo-wrapper"><img src="https://i.ibb.co.com/s9g74vM9/Whats-App-Image-2025-02-26-at-07-29-34-2a74f325.jpg" alt="Foto 15"></div>
+            <div class="col-md-4 col-6 photo-wrapper"><img src="https://i.ibb.co.com/671qBJJy/Whats-App-Image-2025-02-26-at-07-30-00-7cc3cf72.jpg" alt="Foto 16"></div>
+            <div class="col-md-4 col-6 photo-wrapper"><img src="https://i.ibb.co.com/PZRhrKT0/Whats-App-Image-2025-02-26-at-07-30-46-bae94b3d.jpg.jpg" alt="Foto 17"></div>
+            <div class="col-md-4 col-6 photo-wrapper"><img src="https://i.ibb.co.com/svfhfBxh/Whats-App-Image-2025-02-26-at-07-30-45-cd3be9f6.jpg" alt="Foto 18"></div>
+    </div>
+</div>
+</body>
+</html>
