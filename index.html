@@ -123,6 +123,22 @@ function submitForm(event) {
     </script>
   
     <style>
+      body {
+            font-family: "Times New Roman", Times, serif;
+        }
+        .text-center {
+            text-align: center;
+        }
+        p {
+            text-align: justify;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        li {
+            margin-bottom: 5px;
+        }
       {
             margin: 0;
             padding: 0;
@@ -236,6 +252,7 @@ body {
     margin: 0;
     font-size: 14px;
     color: black;
+    text-align: center;
 }
 .social-icon:hover {
     color: #00aced;
@@ -271,7 +288,10 @@ body {
     font-size: 18px;
     transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
-      
+      .marquee {
+    font-family: "Times New Roman", Times, serif;
+        
+  }
     </style>
 </head>
 <body>
@@ -279,7 +299,8 @@ body {
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#" onclick="showPage('home')">
                 <img src="https://i.ibb.co.com/vxvgy4ws/78ec07c8-b878-4f0f-82b4-a9d085ca484d-removalai-preview.jpg" alt="Logo" class="logo">
-                <marquee className="marquee">PPTQ AL-MUNAWWAR</marquee>
+                <marquee class="marquee">SELAMAT DATANG DI YAYASAN ISLAM AL-AMIN PONDOK PESANTREN TAHFIDZUL QUR'AN AL-MUNAWWAR TEMANGGUNG</marquee>
+
             </a>
             <button class="navbar-toggler" type="button" onclick="closeNavbar()">
     <span class="navbar-toggler-icon"></span>
@@ -300,8 +321,8 @@ body {
  <div id="home-content" style="display: none;">
     <div class="container text-center">
         <img src="https://i.ibb.co.com/fG4QXYYD/LOGO-NEW-min.png" width="80%" style="max-width: 100px; margin-bottom: -45px; margin-top: 25px">
-        <p><img src="https://i.ibb.co.com/qMxgVg8V/ar-kop.png" width="100%" style="max-width: 200px; margin-bottom: -100px; margin-top: 10px"></p>
-        <br><br><br>
+        <br><img src="https://i.ibb.co.com/qMxgVg8V/ar-kop.png" width="100%" style="max-width: 200px; margin-bottom: -100px; margin-top: 10px">
+        <br><br><br><br>
         <div id="slideshow" class="carousel slide mx-auto" data-bs-ride="carousel" style="max-width: 500px; margin-bottom: -100px;">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -326,48 +347,53 @@ body {
    <div class="container mt-5">
         <div id="home" class="page">
             <br><br><br>
-          <h1 class="text-center">Pondok Pesantren Tahfidzul Qur`an AL-MUNAWWAR</h1>
-          <p style="text-align:justify">Pondok pesantren Tahfidzul Quran Al Munawwar adalah salah satu lembaga pesantren di bidang Tahfidzul Quran (Program Utama) dan Kajian Kitab-Kitab Kuning ala Pesantren Salaf. Pesantren ini didirikan oleh Almaghfurlah KH. Amin Wastoni pada tahun 1985. Dan resmi terdaftar di Kementerian Agama tepat pada tangal 5 Januari 1998 sampai sekarang. Dan diasuh oleh beliau Bpk, KH. Sholachudin,S.E. dan Ibu Nyai. Hj. Khotimah, S.Ag. Al-Hafidzoh</p>
-           <p style="text-align:justify">Al Munawwar adalah tempat pendidikan  Al Qur`an Dan Pembelajaran kitab kuning ahlussunnah wal jammah. Serta mendidik santri yang berakhlakul karimah sesuai syariat Islam dengan mendalami berbagai ilmu keagaaman. Yang dikemas dengan kurikulum pesantren semi/modern dan salaf dibawah bimbingan beliau murobbi ruhina Bapak K.H. Sholachudin, S.E dan Ibu Nyai Hj. Khotimah, S.Ag Al Hafidzah.</p>
-          <p style="text-align:justify"> Dengan memprioritaskan Tahfidzul Qur`an maka setiap santri diharapkan untuk bisa khatam Al Qur`an, baik Bil Hifdzi maupun Bin Nadzri. Dan di samping itu kurikulum madrasan juga mengkiblat ala pesantren salaf. Dimana ada banyak Fan kitab kuning yang dikaji seperti Fan Fiqhih, tauhid, akhlaq, nahwu sorof,dan tasawuf 
-         <p style="text-align:justify">Selain kegiatan mengaji para santri juga di latih untuk mengembanhkan minat bakat masing masing. Seperti kegiatan Qiroah, Rebana, Silat, Khitobah, Kaligrafi, Bahtsu masail, dan mendalami ilmu kemasyarakatan lainya. Sebagai bekal masa depan untuk hidup bermasyarakat
-          
-          <h1 class="text-center">Program Pesantren</h1>
-        <ul>
-            <li><h6>Tahfidzul Qur’an 30 Juz</h6>
-            <li><h6>Al Qur’an Binadhor 30 Juz</h6>
-            <li><h6>Kajian Kitab-Kitab Kuning Salaf</h6>
-            <li><h6>Madrasah Diniyah Al-Munawwar</h6>
-            <li><h6>Taman Pendidikan Al-Qur’an (TPQ)</h6>
-            <li><h6>Majelis Ta’lim Al-Munawwar</h6>
-            <li><h6>Pendidikan Ilmu Kemasyarakatan</h6>
-        </ul>
+          <h1 class="text-center">Pondok Pesantren Tahfidzul Qur'an AL-MUNAWWAR</h1>
 
-        <h1 class="text-center">Fasilitas</h1>
-        <ul>
-            <li><h6>Asrama Santri Pa/Pi Masing-masing berlantai 2 dengan jumlah kamar 20 buah</li>
-            <li><h6>Kamar mandi, WC, & tempat wudhu yang memadai</li>
-            <li><h6>6 Ruang kelas, 1 Mushola, & 1 Aula</li>
-            <li><h6>Penerangan listrik dan PAM memadai kebutuhan santri</li>
-            <li><h6>Sarana belajar di masing-masing ruangan & perpustakaan</li>
-            <li><h6>Koperasi Putra 1, Koperasi Putri 1</li>
-        </ul>
+    <p>Pondok pesantren Tahfidzul Quran Al Munawwar adalah salah satu lembaga pesantren di bidang Tahfidzul Quran (Program Utama) dan Kajian Kitab-Kitab Kuning ala Pesantren Salaf. Pesantren ini didirikan oleh Almaghfurlah KH. Amin Wastoni pada tahun 1985 dan resmi terdaftar di Kementerian Agama pada 5 Januari 1998 hingga sekarang. Pesantren ini diasuh oleh Bapak KH. Sholachudin, S.E. dan Ibu Nyai Hj. Khotimah, S.Ag. Al-Hafidzoh.</p>
 
-        <h1 class="text-center">Kegiatan Tambahan</h1>
-        <ul>
-            <li><h6>Sema’an Al Qur’an</li>
-            <li><h6>Selapanan Rutin Ahad Wage</li>
-            <li><h6>Maulid Adziba’i & Simtudduror</li>
-            <li><h6>Tahlil</li>
-            <li><h6>Mujahadah & Istighosah</li>
-            <li><h6>Bahtsul Masail (Forum Diskusi)</li>
-            <li><h6>Khithobah</li>
-            <li><h6>Pencak Silat (Pagar Nusa Gasmi)</li>
-            <li><h6>Ziarah Muasis</li>
-            <li><h6>Rebana (Hadroh & Banjari)</li>
-            <li><h6>Qiroah</li>
-            <li><h6>Seni Kaligrafi & Khot</li>
-        </ul>
+    <p>Al Munawwar adalah tempat pendidikan Al-Qur'an dan pembelajaran kitab kuning ahlussunnah wal jama'ah. Pesantren ini mendidik santri agar memiliki akhlakul karimah sesuai syariat Islam dengan mendalami berbagai ilmu keagamaan. Kurikulum pesantren ini menggabungkan sistem semi-modern dan salaf di bawah bimbingan Bapak K.H. Sholachudin, S.E., dan Ibu Nyai Hj. Khotimah, S.Ag. Al-Hafidzoh.</p>
+
+    <p>Dengan memprioritaskan Tahfidzul Qur'an, setiap santri diharapkan dapat khatam Al-Qur'an, baik bil hifdzi maupun bin nadzri. Selain itu, kurikulum madrasah juga berbasis pesantren salaf dengan berbagai kajian kitab kuning seperti Fiqih, Tauhid, Akhlak, Nahwu, Shorof, dan Tasawuf.</p>
+
+    <p>Selain kegiatan mengaji, para santri juga dilatih untuk mengembangkan minat dan bakat masing-masing melalui kegiatan seperti Qiroah, Rebana, Silat, Khitobah, Kaligrafi, Bahtsul Masail, dan ilmu kemasyarakatan lainnya sebagai bekal masa depan dalam kehidupan bermasyarakat.</p>
+
+    <h1 class="text-center">Program Pesantren</h1>
+    <ul>
+        <li>Tahfidzul Qur’an 30 Juz</li>
+        <li>Al Qur’an Binadhor 30 Juz</li>
+        <li>Kajian Kitab-Kitab Kuning Salaf</li>
+        <li>Madrasah Diniyah Al-Munawwar</li>
+        <li>Taman Pendidikan Al-Qur’an (TPQ)</li>
+        <li>Majelis Ta’lim Al-Munawwar</li>
+        <li>Pendidikan Ilmu Kemasyarakatan</li>
+    </ul>
+
+    <h1 class="text-center">Fasilitas</h1>
+    <ul>
+        <li>Asrama Santri Pa/Pi masing-masing berlantai 2 dengan jumlah kamar 20 buah</li>
+        <li>Kamar mandi, WC, & tempat wudhu yang memadai</li>
+        <li>6 Ruang kelas, 1 Mushola, & 1 Aula</li>
+        <li>Penerangan listrik dan air bersih yang mencukupi kebutuhan santri</li>
+        <li>Sarana belajar di masing-masing ruangan & perpustakaan</li>
+        <li>Koperasi Putra 1, Koperasi Putri 1</li>
+    </ul>
+
+    <h1 class="text-center">Kegiatan Tambahan</h1>
+    <ul>
+        <li>Sema’an Al Qur’an</li>
+        <li>Selapanan Rutin Ahad Wage</li>
+        <li>Maulid Adziba’i & Simtudduror</li>
+        <li>Tahlil</li>
+        <li>Mujahadah & Istighosah</li>
+        <li>Bahtsul Masail (Forum Diskusi)</li>
+        <li>Khithobah</li>
+        <li>Pencak Silat (Pagar Nusa Gasmi)</li>
+        <li>Ziarah Muasis</li>
+        <li>Rebana (Hadroh & Banjari)</li>
+        <li>Qiroah</li>
+        <li>Seni Kaligrafi & Khot</li>
+    </ul>
+
 <footer class="footer mt-5">
     <div class="container">
         <div class="row align-items-center">
