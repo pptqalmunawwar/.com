@@ -109,7 +109,6 @@ function submitForm(event) {
         mode: "no-cors"
     })
     .then(() => {
-        alert("Pendaftaran berhasil!");
         showPage('thankyou'); // Pindah ke halaman terima kasih
         isSubmitting = false; // Reset status setelah selesai
     })
@@ -147,7 +146,8 @@ function submitForm(event) {
        .page { display: none; }
         .logo {
   height: 50px;
-  margin-right: 10px;
+  margin-right: 5px;
+  margin-left: -5px;
   animation: flip 4s linear infinite;
 }
 
@@ -179,6 +179,10 @@ function submitForm(event) {
         .btn-success:hover {
             transform: scale(1.05);
         }
+      .btn-primary{
+        background:green;
+        color: white;
+      }
       .gambar-landscape {
     width: 500px; /* Atur lebar sesuai kebutuhan */
     height: 250px; /* Atur tinggi agar lebih landscape */
@@ -238,6 +242,10 @@ body {
             height: 0;
             opacity: 0;
         }
+      .navbar-toggler-icon{
+        position: relative;
+        width:15px;
+      }
         .footer {
             background: none ;
             color: black;
