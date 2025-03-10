@@ -123,7 +123,7 @@ function submitForm(event) {
   
     <style>
       body {
-            font-family: "Times New Roman", Times, serif;
+            font-family: "arial", Times, serif;
         }
         .text-center {
             text-align: center;
@@ -159,6 +159,45 @@ function submitForm(event) {
       transform: rotateY(180deg);
     }
   }
+           .pptq {
+  max-width: 100px;
+  margin-bottom: -45px;
+  margin-top: 25px;
+  animation: spin 4s ease-in-out forwards;
+}
+
+@keyframes spin {
+    0% {
+      opacity: 0;
+      transform: rotateY(0deg) translateX(-50px);
+    }
+    50% {
+      opacity: 5;
+      transform: rotateY(90deg) translateX(0);
+    }
+    100% {
+      transform: rotateY(180deg);
+    }
+}
+.p {
+  max-width: 200px;
+  margin-bottom: 100px;
+  margin-top: 10px;
+  animation: moveToCenter 4s ease-in-out forwards;
+}
+
+@keyframes moveToCenter {
+    0% {
+      opacity: -2;
+      transform: translateX(-100px);
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(0);
+    }
+}
 
         .page { 
             display: none; 
@@ -183,24 +222,35 @@ function submitForm(event) {
         background:green;
         color: white;
       }
-      .gambar-landscape {
-    width: 500px; /* Atur lebar sesuai kebutuhan */
-    height: 250px; /* Atur tinggi agar lebih landscape */
-    object-fit: cover; /* Memotong bagian gambar agar pas */
-    display: block;
-    margin: auto;
-    position: relative; /* Pastikan gambar tidak berada di atas teks */
-    z-index: /* Biarkan teks tetap di atas */
-}
-body {
+      body {
     background-image: url('https://i.ibb.co.com/chYk0z1v/bg.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     filter: brightness(0.8) contrast(1.2);
 }
+
+.gambar-landscape {
+    border: 5px solid #ff6600; /* Bingkai oranye */
+    border-radius: 10px; /* Sudut bingkai melengkung */
+    padding: 5px; /* Ruang antara gambar dan bingkai */
+    background-color: white; /* Latar belakang bingkai */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Efek bayangan untuk estetika */
+        border: 5px solid green; /* Warna bingkai oranye */
+  border-radius: 10px; /* Sudut bingkai melengkung */
+  padding: 5px; /* Ruang antara gambar dan bingkai */
+  background-color: tansparan; /* Latar belakang bingkai */
+    width: 500px; /* Atur lebar sesuai kebutuhan */
+    height: 250px; /* Atur tinggi agar lebih landscape */
+    object-fit: cover; /* Memotong bagian gambar agar pas */
+    display: block;
+    margin: auto;
+    position: relative; /* Pastikan gambar tidak berada di atas teks */
+    z-index: /* Biarkan teks tetap di atas */  
+}
+
       .thank-you-message {
-            text-align: center;
+            text-alirgn: center;
             opacity: 0;
             transform: translateY(-20px);
             animation: fadeIn 1s forwards;
@@ -328,8 +378,8 @@ body {
     </nav>
  <div id="home-content" style="display: none;">
     <div class="container text-center">
-        <img src="https://i.ibb.co.com/fG4QXYYD/LOGO-NEW-min.png" width="80%" style="max-width: 100px; margin-bottom: -45px; margin-top: 25px">
-        <br><img src="https://i.ibb.co.com/qMxgVg8V/ar-kop.png" width="100%" style="max-width: 200px; margin-bottom: -100px; margin-top: 10px">
+        <img src="https://i.ibb.co.com/fG4QXYYD/LOGO-NEW-min.png" width="80%" style="max-width: 100px; margin-bottom: -45px; margin-top: 25px"alt="pptq" class="pptq">
+        <br><img src="https://i.ibb.co.com/qMxgVg8V/ar-kop.png" width="100%" style="max-width: 200px; margin-bottom: -100px; margin-top: 10px"alt="p" class="p">
         <br><br><br><br>
         <div id="slideshow" class="carousel slide mx-auto" data-bs-ride="carousel" style="max-width: 500px; margin-bottom: -100px;">
             <div class="carousel-inner">
@@ -437,8 +487,14 @@ body {
 
         <div id="profil" class="page">
             <h1 class="text-center">PPTQ AL-MUNAWWAR</h1>
-                      
-             <h2>A. Sejarah Berdirinya Pondok Pesantren Tahfidzul Qur'an Al Munawwar</h2>
+                       <h2>A. Visi & Misi</h2>
+           <h6> <p><strong>a.Visi:</strong> Berilmu Amaliyah, Beramal Ilmiah, Berakhlaqul Karimah, Berjiwa Quraniyah, Dan Bermu'asyaroh Basyariah.</p>
+            <p><strong>b.Misi:</strong></p>
+               <p>• Menumbuh kembangkan sikap akhlaqul karimah pada santri sesuai dengan syarat Ahlussunah Wal Jamaah.</p>
+<p>• Melaksanakan bimbingan, pembelajaran, dan penghayatan nilai Islam secara optimal.</p>
+<p>• Menumbuhkan sikap kompetitif pada santri untuk meraih prestasi spiritual.</p>
+<p>• Memberikan keteladanan dalam beribadah, beramal, dan berperilaku.</p>
+             <h2>B. Sejarah Berdirinya Pondok Pesantren Tahfidzul Qur'an Al Munawwar</h2>
              <p style="text-indent: 30px;">PPTQ Al-Munawwar termasuk salah satu pesantren yang terletak di pusat Temanggung, yaitu berada di Jl. Boungenville No.59, Mardisari, Kertosari, Kecamatan Temanggung, Kabupaten Temanggung, Jawa Tengah, kode pos 56217, Indonesia, No. Telp. (0293) 492921, dengan status terdaftar di Kemenag RI, dengan NSPP 510033230071.</p>
 
 <p style="text-indent: 30px;">Asal mula Pondok Pesantren Tahfidzul Qur’an (PPTQ) Al-Munawwar Temanggung merupakan rumah dari KH Amin Wasthoni B.A dan Hj. Siti Zahrotun. Beliau adalah salah satu tokoh agama atau mubaligh di daerah Temanggung. KH. Amin Wasthoni menetap di Dusun Mardisari, Kertosari, Temanggung.</p>
@@ -450,13 +506,7 @@ body {
 <p style="text-indent: 30px;">Maka, pada tahun 2010, Pesantren Al-Munawwar mulai memfokuskan pendidikan pada hafalan Al-Qur’an serta kajian ilmu-ilmu agama. Dengan jumlah santri yang semakin meningkat, selain tahfidz Al-Qur’an, kebanyakan santri masih menempuh pendidikan baik di tingkat SD, SMP, SMA, maupun mahasantri. Ada juga santri yang fokus pada tahfidz Al-Qur’an saja.</p>
 
 <p style="text-indent: 30px;">Hingga saat ini, jumlah santri Pondok Pesantren Al-Munawwar telah mencapai 150 santri. Selain itu, pondok ini telah dialihfungsikan menjadi Pondok Pesantren Tahfidzul Qur’an Al-Munawwar yang dapat menampung santri putra dan putri penghafal Al-Qur’an yang terus meningkat setiap tahunnya.</p>
- <h2>B. Visi & Misi</h2>
-           <h6> <p><strong>a.Visi:</strong> Berilmu Amaliyah, Beramal Ilmiah, Berakhlaqul Karimah, Berjiwa Quraniyah, Dan Bermu'asyaroh Basyariah.</p>
-            <p><strong>b.Misi:</strong></p>
-               <p>• Menumbuh kembangkan sikap akhlaqul karimah pada santri sesuai dengan syarat Ahlussunah Wal Jamaah.</p>
-<p>• Melaksanakan bimbingan, pembelajaran, dan penghayatan nilai Islam secara optimal.</p>
-<p>• Menumbuhkan sikap kompetitif pada santri untuk meraih prestasi spiritual.</p>
-<p>• Memberikan keteladanan dalam beribadah, beramal, dan berperilaku.</p>
+
         </div>
 
        <div class="container mt-5">
