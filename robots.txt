@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://pptqalmunawwar.github.io/sitemap.xml
