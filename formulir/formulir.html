@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulir Pendaftaran</title>
+  <link rel="stylesheet" href="formulir.css">
+</head>
+<body>
+  <h2>Formulir Pendaftaran</h2>
+  <form id="formulirForm">
+    <!-- Data Diri -->
+    <h3>Data Diri</h3>
+    <div class="datadiri">
+      <input type="text" id="nama" placeholder="Nama Lengkap" required><br>
+      <div class="datadiri">
+        <input type="text" id="tempatTanggalLahir" placeholder="Tempat, Tanggal Lahir" required><br>
+      </div>
+      <div class="datadiri">
+        <textarea id="alamat" placeholder="Alamat" required></textarea><br>
+      </div>
+      <div class="datadiri">
+        <input type="tel" id="hp" placeholder="Nomor HP" required><br>
+      </div>
+    
+    </div>
+
+    <!-- Data Ayah -->
+    <h3>Data Ayah</h3>
+    <input type="text" id="namaAyah" placeholder="Nama Lengkap Ayah" required><br>
+    <input type="text" id="ttlAyah" placeholder="Tempat, Tanggal Lahir Ayah" required><br>
+    <textarea id="alamatAyah" placeholder="Alamat Ayah" required></textarea><br>
+    <input type="tel" id="hpAyah" placeholder="Nomor HP Ayah" required><br>
+
+    <!-- Data Ibu -->
+    <h3>Data Ibu</h3>
+    <input type="text" id="namaIbu" placeholder="Nama Lengkap Ibu" required><br>
+    <input type="text" id="ttlIbu" placeholder="Tempat, Tanggal Lahir Ibu" required><br>
+    <textarea id="alamatIbu" placeholder="Alamat Ibu" required></textarea><br>
+    <input type="tel" id="hpIbu" placeholder="Nomor HP Ibu" required><br>
+
+    <!-- Upload Berkas -->
+    <h3>Upload Berkas</h3>
+    <label>Foto Kartu Keluarga:</label><input type="file" id="kk" required><br>
+    <label>Foto Akta Kelahiran:</label><input type="file" id="akta" required><br>
+    <label>Foto KTP Ayah:</label><input type="file" id="ktpAyah" required><br>
+    <label>Foto KTP Ibu:</label><input type="file" id="ktpIbu" required><br>
+
+    <button type="submit">Kirim</button>
+  </form>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+    import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCUjTj5MvXJnzqeQmj7AIRX31u-IunQb44",
+      authDomain: "ppdb-e322b.firebaseapp.com",
+      projectId: "ppdb-e322b",
+      storageBucket: "ppdb-e322b.appspot.com",
+      messagingSenderId: "785181911438",
+      appId: "1:785181911438:web:536c44712923c83dfa5cdf"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    // Pastikan user terautentikasi
+    onAuthStateChanged(auth, user => {
+      if (!user) {
+        window.location.href = "../login/login.html"; // Arahkan jika belum login
+      }
+    });
+
+    // Fungsi untuk mengonversi file ke Base64
+    const fileToBase64 = (file) => {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result);
+        reader.onerror = (error) => reject(error);
+        reader.readAsDataURL(file);
+      });
+    };
+
+    document.getElementById("formulirForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const user = auth.currentUser;
+      if (!user) {
+        alert("Pengguna belum terautentikasi.");
+        return;
+      }
+
+      const nama = document.getElementById("nama").value;
+      const tempatTanggalLahir = document.getElementById("tempatTanggalLahir").value;
+      const alamat = document.getElementById("alamat").value;
+      const hp = document.getElementById("hp").value;
+
+      const namaAyah = document.getElementById("namaAyah").value;
+      const ttlAyah = document.getElementById("ttlAyah").value;
+      const alamatAyah = document.getElementById("alamatAyah").value;
+      const hpAyah = document.getElementById("hpAyah").value;
+
+      const namaIbu = document.getElementById("namaIbu").value;
+      const ttlIbu = document.getElementById("ttlIbu").value;
+      const alamatIbu = document.getElementById("alamatIbu").value;
+      const hpIbu = document.getElementById("hpIbu").value;
+
+      const kkFile = document.getElementById("kk").files[0];
+      const aktaFile = document.getElementById("akta").files[0];
+      const ktpAyahFile = document.getElementById("ktpAyah").files[0];
+      const ktpIbuFile = document.getElementById("ktpIbu").files[0];
+
+      // Validasi: Pastikan semua file terpilih
+      if (!kkFile || !aktaFile || !ktpAyahFile || !ktpIbuFile) {
+        alert("Harap unggah semua berkas!");
+        return;
+      }
+
+      try {
+        // Konversi file ke Base64
+        const kkBase64 = await fileToBase64(kkFile);
+        const aktaBase64 = await fileToBase64(aktaFile);
+        const ktpAyahBase64 = await fileToBase64(ktpAyahFile);
+        const ktpIbuBase64 = await fileToBase64(ktpIbuFile);
+
+        // Simpan data formulir ke Firestore (termasuk Base64 file)
+        await setDoc(doc(db, "formulir", user.uid), {
+          uid: user.uid,
+          nama,
+          tempatTanggalLahir,
+          alamat,
+          hp,
+          ayah: {
+            nama: namaAyah,
+            ttl: ttlAyah,
+            alamat: alamatAyah,
+            hp: hpAyah
+          },
+          ibu: {
+            nama: namaIbu,
+            ttl: ttlIbu,
+            alamat: alamatIbu,
+            hp: hpIbu
+          },
+          berkas: {
+            kk: kkBase64,
+            akta: aktaBase64,
+            ktpAyah: ktpAyahBase64,
+            ktpIbu: ktpIbuBase64
+          },
+          email: user.email
+        });
+
+        alert("Formulir berhasil dikirim!");
+      } catch (error) {
+        console.error("Terjadi kesalahan:", error);
+        alert("Gagal mengirim formulir, coba lagi.");
+      }
+    });
+  </script>
+</body>
+</html>
