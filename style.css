@@ -1,0 +1,159 @@
+.page { display: none; }
+        .logo {
+            height: 50px;
+            margin-right: 10px;
+        }
+        .page { 
+            display: none; 
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .container {
+            max-width: 800px;
+        }
+        .rincian-pembayaran {
+            background-color: none;
+            padding: 20px;
+            border-radius: 10px;
+        }
+            .gambar-landscape {
+    width: 500px; /* Atur lebar sesuai kebutuhan */
+    height: 250px; /* Atur tinggi agar lebih landscape */
+    object-fit: cover; /* Memotong bagian gambar agar pas */
+    display: block;
+    margin: auto;
+    position: relative; /* Pastikan gambar tidak berada di atas teks */
+    z-index: 1; /* Biarkan teks tetap di atas */
+}
+    body {
+    background-image: url('https://i.ibb.co.com/chYk0z1v/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    filter: brightness(0.8) contrast(1.2);
+         }
+.teks {
+    position: relative;
+    top: 1000px; /* Geser teks ke bawah */
+}
+.photo-wrapper {
+    padding: 10px;
+}
+
+.photo-wrapper img {
+    width: 100%;
+    height: 200px; 
+    object-fit: cover; 
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.row {
+    margin-bottom: 20px;
+}
+.daf p {
+    text-align: left;
+}
+.daf .btn {
+    background-color: chartreuse;
+    text-align: end;
+}
+/* CSS untuk carousel */
+#slideshow {
+    max-width: 500px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.carousel-inner {
+    border-radius: 12px; /* Rounded corners untuk gambar */
+    overflow: hidden; /* Memastikan gambar tetap terpotong rapi */
+}
+
+.gambar-landscape {
+    width: 100%; /* Agar gambar mengisi seluruh lebar */
+    height: 350px; /* Mengatur tinggi gambar agar pas */
+    object-fit: cover; /* Memotong gambar untuk menyesuaikan ukuran */
+    display: block;
+    margin: auto;
+}
+
+/* Tombol navigasi */
+.carousel-control-prev, .carousel-control-next {
+    filter: brightness(0.5);
+    transition: filter 0.3s ease;
+}
+
+.carousel-control-prev:hover, .carousel-control-next:hover {
+    filter: brightness(1);
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: #fff; /* Membuat ikon navigasi lebih kontras */
+}
+
+/* Menyesuaikan ukuran ikon kontrol */
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    width: 30px;
+    height: 30px;
+}
+
+/* Responsif: Ukuran carousel untuk perangkat kecil */
+@media (max-width: 768px) {
+    #slideshow {
+        max-width: 100%;
+    }
+    .gambar-landscape {
+        height: 250px; /* Mengurangi tinggi gambar pada layar kecil */
+    }
+}
+.footer {
+    background: none ;
+    color: black;
+    padding: 20px 0;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+}
+
+.copyright {
+margin: 0;
+font-size: 14px;
+color: black;
+text-align: center;
+}
+.social-icon:hover {
+color: #00aced;
+transform: scale(1.2);
+}
+.social-icon-instagram {
+margin: 0 10px;
+color: purple;
+font-size: 18px;
+transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+.social-icon-facebook {
+margin: 0 10px;
+color: blue;
+font-size: 18px;
+transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+.social-icon-youtube {
+margin: 0 10px;
+color: red;
+font-size: 18px;
+transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+.social-icon-tiktok {
+margin: 0 10px;
+color: black;
+font-size: 18px;
+transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+.social-icon-whatsapp {
+margin: 0 10px;
+color: green;
+font-size: 18px;
+transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
