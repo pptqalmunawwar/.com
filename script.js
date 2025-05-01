@@ -73,5 +73,5 @@ document.addEventListener("DOMContentLoaded", function() {
 // Fungsi untuk pendaftaran tanpa alert
 function daftar() {
     // Arahkan pengguna ke halaman index.html dalam subfolder 'login'
-    window.location.href = "/login/login.html"; 
+   window.location.href = "https://pptqalmunawwar.github.io/.com/login/login.html"; 
 }
