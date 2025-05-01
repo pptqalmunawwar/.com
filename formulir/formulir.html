@@ -5,6 +5,129 @@
   <title>Formulir Pendaftaran</title>
   <link rel="stylesheet" href="formulir.css">
 </head>
+  <style>
+    /* General Styles */
+body {
+    font-family: 'Tahoma', sans-serif;
+    background-color: #000000;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Efek parallax */
+  }
+  
+  h2, h3 {
+    color: #ffffff; /* Warna hijau gelap */
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    text-align: center; /* Menengahkan judul */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Efek bayangan untuk teks */
+  }
+  
+  /* Form */
+  form {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-image: url('https://i.ibb.co.com/84DMNP9Q/46f909fa38272080efd8bda65aff5aea.jpg');
+    background-size:cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: rgba(255, 255, 255, 0.85); /* Putih transparan agar sedikit menonjol dari background */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 2px solid #2c6b42; /* Border hijau */
+  }
+  
+  /* Heading inside form */
+  h3 {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #ffffff;
+    text-align: left; /* Menjaga konsistensi gaya */
+    padding-left: 10px;
+  }
+  
+  /* Input Fields */
+  input[type="text"],
+  input[type="tel"],
+  textarea,
+  input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+  }
+  
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  
+  /* Focus effect on inputs */
+  input[type="text"]:focus,
+  input[type="tel"]:focus,
+  textarea:focus {
+    border-color: #2c6b42; /* Fokus hijau */
+  }
+  
+  /* Labels */
+  label {
+    font-weight: bold;
+    color: #2c6b42;
+    margin-bottom: 5px;
+    display: block;
+    font-size: 1.1em;
+  }
+  
+  /* File Input */
+  input[type="file"] {
+    padding: 8px 0;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+  }
+  
+  /* Button */
+  button[type="submit"] {
+    background-color: #4CAF50; /* Hijau terang */
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    font-size: 1.2em;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase; /* Tulisan tombol lebih tegas */
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #45a049; /* Hijau sedikit lebih gelap */
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 600px) {
+    form {
+      padding: 15px;
+    }
+  
+    input[type="text"],
+    input[type="tel"],
+    textarea,
+    input[type="file"],
+    button[type="submit"] {
+      font-size: 0.9em;
+    }
+  }
+  
+  </style>
 <body>
   <h2>Formulir Pendaftaran</h2>
   <form id="formulirForm">
