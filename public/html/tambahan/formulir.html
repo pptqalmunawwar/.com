@@ -162,8 +162,7 @@ body {
     <input type="tel" id="hpIbu" placeholder="Nomor HP Ibu" required><br>
 
     <!-- Upload Berkas -->
-    <h3>Upload Berkas</h3>
-    <h2>Upload Foto Maks 100kb</h2>
+    <h3>Upload Berkas Maks 100kb</h3>
     <label>Foto Kartu Keluarga:</label><input type="file" id="kk" required><br>
     <label>Foto Akta Kelahiran:</label><input type="file" id="akta" required><br>
     <label>Foto KTP Ayah:</label><input type="file" id="ktpAyah" required><br>
@@ -279,7 +278,7 @@ body {
         alert("Formulir berhasil dikirim!");
       } catch (error) {
         console.error("Terjadi kesalahan:", error);
-        alert("Gagal mengirim formulir, coba lagi.");
+        alert("Gagal mengirim formulir, coba masukan foto yang kurang dari 100kb!.");
       }
     });
   </script>
